@@ -31,4 +31,7 @@ jobs:
       run: terraform fmt -check
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan
+      run: |
+        export TF_VAR_do_token=${{ secrets.DO_TOKEN }}
+        terraform plan
+        
