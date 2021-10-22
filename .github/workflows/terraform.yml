@@ -33,5 +33,6 @@ jobs:
     - name: Terraform Plan
       run: |
         export TF_VAR_do_token=${{ secrets.DO_TOKEN }}
+        echo $TF_VAR_do_token
         terraform plan
         
