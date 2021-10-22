@@ -8,17 +8,17 @@ variable "do_token" {}
 
 # Name of your SSH Keys as it appears in the DigitalOcean dashboard
 variable "ssh_key_matt" {
-  type = string
+  type    = string
   default = "netmaker"
 }
 
 variable "ssh_key_dillon" {
-  type = string
+  type    = string
   default = "dillon"
 }
 
 variable "ssh_key_alex" {
-  type = string
+  type    = string
   default = "alex"
 }
 
