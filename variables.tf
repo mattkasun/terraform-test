@@ -9,17 +9,17 @@ variable "do_token" {}
 # Name of your SSH Keys as it appears in the DigitalOcean dashboard
 variable "ssh_key_matt" {
   type    = string
-  default = "4c:14:4f:5b:b3:71:c0:ef:88:d5:69:a0:6b:ec:0d:0a"
+  default = "winterfell"
 }
 
 variable "ssh_key_dillon" {
   type    = string
-  default = "59:91:ba:32:be:7b:43:8d:0e:e0:68:af:43:12:39:15"
+  default = "dillon"
 }
 
 variable "ssh_key_alex" {
   type    = string
-  default = "38:e7:1b:a4:00:23:2f:45:4f:80:b7:ae:64:28:f2:6c"
+  default = "alex"
 }
 
 # The first part of my URL. Ex: the www in www.digitalocean.com
