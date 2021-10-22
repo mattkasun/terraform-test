@@ -25,9 +25,9 @@ jobs:
     #  with:
     #    cli_config_credentials_token: ${{ secrets.TF_API_TOKEN }}    
       run: |
-        sudo apt-get update
-        sudo apt-get install terraform 
-
+        wget https://releases.hashicorp.com/terraform/1.0.9/terraform_1.0.9_linux_amd64.zip
+        unzip -d /usr/bin terraform_1.0.9_linux_amd64.zip
+        
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
       run: terraform init
