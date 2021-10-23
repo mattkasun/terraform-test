@@ -51,7 +51,7 @@ jobs:
           StrickHostKeyChecking no
         END
       env:
-          SSH_KEY: {{ secrets.TESTING_SSH_KEY }}
+          SSH_KEY: ${{ secrets.TESTING_SSH_KEY }}
     - name: Perform Automation
       run: |
           cd automation
