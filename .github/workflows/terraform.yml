@@ -43,7 +43,8 @@ jobs:
       run: |
         mkdir -p ~/.ssh/
         echo "$SSH_KEY" > ~/.ssh/deploy.key
-        chmod 600 ~/.ssh/config <<END
+        chmod 600 ~/.ssh/deploy.key 
+        cat >>~/.ssh/config <<END
         Host *.clustercat.com
           User root
           IdentityFile ~/.ssh/deploy.key
