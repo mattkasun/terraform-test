@@ -60,6 +60,7 @@ jobs:
           ./init.sh
           sleep 60
     - name: Destroy Resources
+      if: always()
       run :
         export TF_VAR_do_token=${{ secrets.DO_TOKEN }}
         terraform destroy
