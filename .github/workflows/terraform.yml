@@ -48,7 +48,7 @@ jobs:
         Host *.clustercat.com
           User root
           IdentityFile ~/.ssh/deploy.key
-          StrickHostKeyChecking no
+          StrictHostKeyChecking no
         END
       env:
           SSH_KEY: ${{ secrets.TESTING_SSH_KEY }}
