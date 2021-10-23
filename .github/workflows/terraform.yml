@@ -2,7 +2,7 @@ name: 'Terraform'
 
 on:
   workflow_dispatch:
-  respository_dispatch:
+  repository_dispatch:
 
 jobs:
   terraform:
