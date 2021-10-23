@@ -25,6 +25,7 @@ runcmd:
 - sed -i "s/SERVER_PUBLIC_IP/$PUBLIC_IP/g" /root/docker-compose.yml
 - sed -i "s/COREDNS_IP/$COREDNS_IP/g" /root/docker-compose.yml
 - sed -i "s/REPLACE_MASTER_KEY/masterkey/g" /root/docker-compose.yml
+- sed -i "s?gravitl/netmaker.*?ghcr.io/gravitl/netmaker:testing?" /root/docker-compose.yml
 - cd /root; docker-compose up -d
 EOF
 }
