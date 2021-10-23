@@ -39,12 +39,29 @@ jobs:
       run: |
         export TF_VAR_do_token=${{ secrets.DO_TOKEN }}
         terraform apply -auto-approve
+    - name: Setup SSH
+      run: |
+        mkdir -p ~/.ssh/
+        echo "$SSH_KEY" > ~/.ssh/deploy.key
+        chmod 600 ~/.ssh/config <<END
+        Host *.clustercat.com
+          User root
+          IdentityFile ~/.ssh/deploy.key
+          StrickHostKeyChecking no
+        END
+      env:
+          SSH_KEY: {{ secrets.TESTING_SSH_KEY }}
     - name: Perform Automation
       run: |
           cd automation
           #wait for bit
           sleep 10
           ./init.sh
+          sleep 60
+    - name: Destroy Resources
+      run :
+        export TF_VAR_do_token=${{ secrets.DO_TOKEN }}
+        terraform destroy
 
 
         
