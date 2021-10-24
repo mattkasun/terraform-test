@@ -57,7 +57,11 @@ jobs:
           cd automation
           #wait for bit
           sleep 10
-          ./init.sh
+          ./server_complete.sh
+          ./addadmin.sh
+          ./addnetwork.sh
+          access=$( ./addkey.sh | /usr/bin/jq --raw-output '.accessstring')
+          ssh client.clustercat.com ./netclient join --name client -t $access
           sleep 60
     - name: Destroy Resources
       if: always()
