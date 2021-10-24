@@ -57,15 +57,28 @@ jobs:
           cd automation
           #wait for bit
           sleep 10
+          #wait until cloud-init is complete 
           ./server_complete.sh
+          #add admin to server
           ./addadmin.sh
+          #add netmaker network
           ./addnetwork.sh
+          #add key to network
           access=$( ./addkey.sh | /usr/bin/jq --raw-output '.accessstring')
+          #have client join network
           ssh client.clustercat.com ./netclient join --name client -t $access
-          sleep 60
+          #ensure ping works
+          ssh client.clustercat.com ping -c 3 netmaker.netmaker
+          ssh server.clustercat.com ping -c 3 client.netmaker
+          #wait until done network is created
+          while [ ! -f /etc/netclient/config/netconfig-done ]
+          do
+            sleep 30
+          done
     - name: Destroy Resources
       if: always()
       run :
+        cd
         export TF_VAR_do_token=${{ secrets.DO_TOKEN }}
         terraform destroy
 
