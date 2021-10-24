@@ -69,7 +69,7 @@ jobs:
           ssh client.clustercat.com ./netclient join --name client -t $access
           #setup dns on server
           ip=$( curl ifconfig.me )
-          resolvectl dns nm-netaker $ip
+          resolvectl dns nm-netmaker $ip
           #ensure ping works
           ssh client.clustercat.com ping -c 3 netmaker.netmaker
           ssh server.clustercat.com ping -c 3 client.netmaker
